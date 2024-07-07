@@ -1,0 +1,3 @@
+{"dataLoader": "CSVLoader", "dataPath": "C:\\Users\\91971\\Downloads\\Text-ML-Pipeline\\sentiment_analysis\\data\\sample_reviews.csv", "preprocessing": ["fillnan", "lowercase"], "preprocessingPath": "./preprocessed/", "features": ["tfidf"], "featureKwargs": [{"ngram_range": [2, 3], "analyzer": "word"}], "featurePath": "./features/", "model": "TensorFlow", "modelKwargs": {"model_path": "./models/model.h5"}, "modelPath": "./models/", "metrics": ["precision", "recall"], "metricsKwargs": [{"average": "macro"}, {"average": "macro"}], "metricPath": "./metrics/", "outputPath": "./results/", "experimentName": "result.txt"}
+precision,1.000000
+recall,1.000000

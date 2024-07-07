@@ -1,0 +1,6 @@
+numpy
+scikit-learn
+nltk
+tensorflow
+pandas
+django
