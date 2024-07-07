@@ -4,7 +4,7 @@ scikit-learn
 nltk
 tensorflow
 pandas
-Django>=3.2,<4.0
+django
 gunicorn
 django-heroku
 whitenoise
