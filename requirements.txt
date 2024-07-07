@@ -4,3 +4,9 @@ nltk
 tensorflow
 pandas
 django
+Django>=3.2,<4.0
+gunicorn
+django-heroku
+whitenoise
+tensorflow
+
