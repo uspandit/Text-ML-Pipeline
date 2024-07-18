@@ -1,4 +1,3 @@
-# Import TensorFlow and other necessary libraries
 import tensorflow as tf
 from tensorflow.keras.models import Sequential
 from tensorflow.keras.layers import Dense, Dropout
@@ -9,7 +8,7 @@ import json
 import datetime
 import pickle
 import numpy
-import scipy  # Add this line to import scipy
+import scipy  
 from scipy.sparse import csr_matrix
 from sklearn.metrics import accuracy_score, f1_score, recall_score, precision_score
 from dataLoader import DataLoader
@@ -178,3 +177,25 @@ class Pipeline(object):
 
     def timestamp(self):
         return datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
+    
+    def predict(self, data):
+        # Ensure data is preprocessed and feature-extracted like training data
+        clean_data = self.preprocessData(data, data)[0]
+        vectors = self.extractFeatures(clean_data, clean_data)[0]
+
+        # Convert vectors to dense format if necessary
+        if isinstance(vectors, scipy.sparse.csr.csr_matrix):
+            vectors = vectors.toarray()
+
+        # Load the model
+        model_path = os.path.join(self.config['modelPath'], "model.h5")
+        model = tf.keras.models.load_model(model_path)
+
+        # Make predictions
+        predictions = model.predict(vectors)
+        predictions = (predictions > 0.5).astype(int)
+
+        # Decode numeric predictions to labels
+        label_map = {0: 'negative', 1: 'positive'}
+        decoded_predictions = [label_map[pred[0]] for pred in predictions]
+        return decoded_predictions

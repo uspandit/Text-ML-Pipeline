@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Results</title>
+</head>
+<body>
+    <h1>Results</h1>
+    <table border="1">
+        <tr>
+            <th>Comment</th>
+            <th>Sentiment</th>
+        </tr>
+        {% for comment, sentiment in results %}
+        <tr>
+            <td>{{ comment }}</td>
+            <td>{{ 'Positive' if sentiment == 1 else 'Negative' }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>
